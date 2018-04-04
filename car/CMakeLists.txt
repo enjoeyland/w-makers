@@ -8,4 +8,4 @@ include_directories(.)
 add_executable(car
         CarMovement.cpp
         CarMovement.h
-        D2Vector.h)
+        D2Vector.h CarMovementAnalog.cpp CarMovementAnalog.h)
