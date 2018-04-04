@@ -1,5 +1,5 @@
 //
-// Created by Administrator on 2018-04-04.
+// Created by Enjoeyland on 2018-04-04.
 //
 
 #include "CarMovementAnalog.h"
@@ -19,5 +19,4 @@ void CarMovementAnalog::setMotorSpeed(float right_speed, float left_speed) {
 		analogWrite(pin_left_motor_go, 0);
 		analogWrite(pin_left_motor_back, -left_speed);
 	}
-
 }
