@@ -3,6 +3,7 @@
 // f,b,tl 수정 완료
 // speed값을 0~255에 맞도록 수정 해야 될거 같다.
 
+// CarMovement
 CarMovement::CarMovement(
 		int pin_left_motor_go,
 		int pin_left_motor_back,
@@ -94,5 +95,41 @@ void CarMovement::spinRight	(const float &average_speed, const float &radius, co
 
 	if (degree){
 		turnSpecificDegree(angular_speed, degree);
+	}
+}
+
+//CarMoveAnalog
+void CarMovementAnalog::setMotorSpeed(float right_speed, float left_speed) {
+	if (right_speed  >= 0) {
+		analogWrite(pin_right_motor_go, right_speed);
+		analogWrite(pin_right_motor_back, 0);
+	} else {
+		analogWrite(pin_right_motor_go, 0);
+		analogWrite(pin_right_motor_back, -right_speed);
+	}
+	if (left_speed >= 0) {
+		analogWrite(pin_left_motor_go, left_speed);
+		analogWrite(pin_left_motor_back, 0);
+	} else {
+		analogWrite(pin_left_motor_go, 0);
+		analogWrite(pin_left_motor_back, -left_speed);
+	}
+}
+
+// CarMovementDigital
+void CarMovementDigital::setMotorSpeed(float right_speed, float left_speed) {
+	if (right_speed  >= 0) {
+		digitalWrite(pin_right_motor_go, HIGH);
+		digitalWrite(pin_right_motor_back, LOW);
+	} else {
+		digitalWrite(pin_right_motor_go, LOW);
+		digitalWrite(pin_right_motor_back, HIGH);
+	}
+	if (left_speed >= 0) {
+		digitalWrite(pin_left_motor_go, HIGH);
+		digitalWrite(pin_left_motor_back, LOW);
+	} else {
+		digitalWrite(pin_left_motor_go, LOW);
+		digitalWrite(pin_left_motor_back, HIGH);
 	}
 }
