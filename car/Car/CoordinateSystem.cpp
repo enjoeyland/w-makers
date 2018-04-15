@@ -3,7 +3,7 @@
 //
 
 #include "CoordinateSystem.h"
-#include "utility.h"
+#include "util.h"
 #include <math.h>
 using joey_utility::toRadian;
 using joey_utility::toDegree;
