@@ -4,9 +4,11 @@
 
 #include "util.h"
 using namespace joey_utility;
+#include <Arduino.h>
 
 #define PI 3.14159265
 
+template <typename T>
 T joey_utility::toRadian(T degree) {
 	return degree * PI / 180;
 }

@@ -6,6 +6,7 @@
 #define CAR_COORDINATESYSTEM_H
 
 namespace coordinateSystem {
+	template <typename T>
 	class RectangularPoint;
 
 	template <typename T>
@@ -22,13 +23,13 @@ namespace coordinateSystem {
 		~PolarPoint();
 
 	public:
-		RectangularPoint toRectangular();
+		RectangularPoint<T> toRectangular();
 		void move(T x, T y);
 		void modifyDegree(T degree);
 		void modifyRadialDistance(T radial_distance);
 
 	private:
-		RectangularPoint correspondingRP;
+		RectangularPoint<T> correspondingRP;
 		bool correspondingRP_Defined;
 	};
 
@@ -46,11 +47,11 @@ namespace coordinateSystem {
 		~RectangularPoint();
 
 	public:
-		PolarPoint toPolar();
+		PolarPoint<T> toPolar();
 		void move(T x, T y);
 
 	private:
-		PolarPoint correspondingPP;
+		PolarPoint<T> correspondingPP;
 		bool correspondingRP_Defined;
 	};
 }

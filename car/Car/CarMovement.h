@@ -1,6 +1,6 @@
 #ifndef CAR_CARMOVEMENT_H
 #define CAR_CARMOVEMENT_H
-namespace CarMovement {
+namespace carMovement {
 
 	class CarMovement {
 	protected:
@@ -25,9 +25,9 @@ namespace CarMovement {
 
 	public:
 		// 앞으로, 뒤로
-		void goForward(const float &speed);
+		void goForward(const float &speed, float distance = 0);
 
-		void goBackward(const float &speed);
+		void goBackward(const float &speed, float distance = 0);
 
 		void stop();
 
@@ -52,12 +52,31 @@ namespace CarMovement {
 
 	};
 
-	class CarMovementAnalog : public CaraMovement {
+	class CarMovementAnalog : public CarMovement {
+	public:
+		CarMovementAnalog(int pin_left_motor_go,
+				int pin_left_motor_back,
+				int pin_right_motor_go,
+				int pin_right_motor_back,
+				float car_width):
+		CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car_width) {};
+		~CarMovementAnalog();
+	public:
+		virtual void setMotorSpeed(const float &right_speed, const float &left_speed);
 
 	};
 
-	class CarMovementDigital : public CaraMovement {
-
+	class CarMovementDigital : public CarMovement {
+	public:
+		CarMovementDigital(int pin_left_motor_go,
+				int pin_left_motor_back,
+				int pin_right_motor_go,
+				int pin_right_motor_back,
+				float car_width):
+		CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car_width) {};
+		~CarMovementDigital();
+	public:
+		virtual void setMotorSpeed(const float &right_speed, const float &left_speed);
 	};
 }
 #endif //CAR_CARMOVEMENT_H
