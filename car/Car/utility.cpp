@@ -7,8 +7,12 @@ using namespace joey_utility;
 
 #define PI 3.14159265
 
-float joey_utility::toRadian() {
+T joey_utility::toRadian(T degree) {
 	return degree * PI / 180;
+}
+
+float joey_utility::toDegree(float radian) {
+	return radian * 180 / PI;
 }
 
 float joey_utility::map2Hex(float value, float fromLow, float fromHigh) {
