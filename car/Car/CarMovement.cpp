@@ -3,7 +3,7 @@
 
 // speed값을 0~255에 맞도록 수정 해야 될거 같다.
 
-namespace carMovement {
+//namespace carMovement {
 	// CarMovement
 	CarMovement::CarMovement(
 			int pin_left_motor_go,
@@ -140,4 +140,4 @@ namespace carMovement {
 			digitalWrite(pin_left_motor_back, HIGH);
 		}
 	}
-}
+//}

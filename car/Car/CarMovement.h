@@ -1,6 +1,7 @@
 #ifndef CAR_CARMOVEMENT_H
 #define CAR_CARMOVEMENT_H
-namespace carMovement {
+
+//namespace carMovement {
 
 	class CarMovement {
 	protected:
@@ -78,5 +79,5 @@ namespace carMovement {
 	public:
 		virtual void setMotorSpeed(const float &right_speed, const float &left_speed);
 	};
-}
+//}
 #endif //CAR_CARMOVEMENT_H
