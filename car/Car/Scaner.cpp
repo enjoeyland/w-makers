@@ -5,6 +5,7 @@
 #include "Scaner.h"
 #include <Arduino.h>
 #include <Servo.h>
+//#include <vector>
 
 Scaner::Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int pulseMin, int pulseMax):
 		pinUltrasonicTrig(pinUltrasonicTrig),
@@ -25,30 +26,48 @@ double Scaner::measureDistance() { // measure distance with servo motor
 
 	double duration = pulseIn(pinUltrasonicEcho, HIGH); // wait pulse
 
-	double distance = duration * 0.0177; // 334m/s / 2(왕복 제거)
+	double distance = duration * 0.0172; // 334m/s / 2(왕복 제거)
 	return distance;
 }
 
 PolarPoint<double>* Scaner::scan(double degree) {
-
+	double degreeDiff = setServoDegree(degree);
+	double distance = measureDistance();
+	PolarPoint<double> scanData[1];
+	scanData[0].SetInfo(degree - degreeDiff, distance);
+	return scanData;
 }
 
-PolarPoint<double>* Scaner::scanSpecific(double startDegree, double endDegree, double density) {
+PolarPoint<double>* Scaner::scanArea(double startDegree, double endDegree, double density) {
+	// startDegree <= endDegree
+	// as of now endDegree can be maximum 180
+	if (startDegree == endDegree) {
+		return scan(startDegree);
+	}
 
+	int scanDataSize = (int) (abs(startDegree - endDegree) * density) + 1;
+	PolarPoint<double> scanData[scanDataSize];
+	for (int i = 0; i < scanDataSize; i++) {
+		PolarPoint<double>* scanDataSegment = scan(startDegree + i / density);
+		scanData[i].SetInfo(scanDataSegment->degree, scanDataSegment->radialDistance);
+	}
+	return scanData;
 }
 
 PolarPoint<double>* Scaner::scan180(double density) {
-
+	return scanArea(0.0, 180.0, density);
 }
 
-PolarPoint<double>* Scaner::scan360(double density) {
-
-}
+//PolarPoint<double>* Scaner::scan360(double density) {
+//	vector<PolarPoint> scanDataVector;
+//	scanDataVector.reserve((int) (360 * density));
+//  // spinning should have CarMovement instance
+//}
 
 double Scaner::setServoDegree(double degree) {
 	long realPulseWidth = map(degree, 0, 180, pulseMin, pulseMax);
-	int practicalPulseWidth = static_cast<int>(realPulseWidth);
+	int practicalPulseWidth = (int) realPulseWidth;
 	scanerServo.writeMicroseconds(practicalPulseWidth);
-	double diff = static_cast<double> (map(static_cast<long>(realPulseWidth) - practicalPulseWidth, pulseMin, pulseMax, 0, 180));
+	double diff = (double) (map( (long) (realPulseWidth) - practicalPulseWidth, pulseMin, pulseMax, 0, 180));
 	return diff; // return difference with param; unit as degree
 }

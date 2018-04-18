@@ -27,9 +27,9 @@ public:
 	PolarPoint<double>* scan(double degree); //return array of PolarPoint
 
 	// density is the number of scan per 1 degree
-	PolarPoint<double>* scanSpecific(double startDegree, double endDegree, double density = 1.0); 
+	PolarPoint<double>* scanArea(double startDegree, double endDegree, double density = 1.0);
 	PolarPoint<double>* scan180(double density = 1.0);
-	PolarPoint<double>* scan360(double density = 1.0);
+//	PolarPoint<double>* scan360(double density = 1.0);
 
 protected:
 	double setServoDegree(double degree); // return difference with param; unit as degree
