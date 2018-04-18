@@ -11,7 +11,7 @@ int pinRightMotorBack = 11;    // 우측모터후진(IN4)
 
 float car_width = 20;
 
-CarMovement *myCar = new CarMovementAnalog(pinLeftMotorGo, pinLeftMotorBack, pinRightMotorGo, pinRightMotorBack, car_width);
+CarMovement myCar = static_cast<CarMovement> (CarMovementAnalog(pinLeftMotorGo, pinLeftMotorBack, pinRightMotorGo, pinRightMotorBack, car_width));
 
 
 void setup()
@@ -24,8 +24,8 @@ void loop()
 }
 
 void test_move() {
-	myCar->goForward(255.f, 100.f);
-	myCar->goBackward(255.f, 100.f);
-	myCar->spinLeft(200.f, 0.f , 360.f);
-	myCar->turnRight(200.f, 10.f, 360.f);
+	myCar.goForward(255.0, 100.0);
+	myCar.goBackward(255.0, 100.0);
+	myCar.spinLeft(200.0, 0.0 , 360.0);
+	myCar.turnRight(200.0, 10.0, 360.0);
 }
