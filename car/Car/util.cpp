@@ -10,7 +10,7 @@ using namespace joey_utility;
 
 template <typename T>
 T joey_utility::toRadian(T degree) {
-	return degree * PI / 180;
+	return (T) degree * (PI / (double)180);
 }
 
 double joey_utility::toDegree(double radian) {
@@ -18,10 +18,10 @@ double joey_utility::toDegree(double radian) {
 }
 
 double joey_utility::map2Hex(double value, double fromLow, double fromHigh) {
-	return map(value, fromLow, fromHigh, 0, 255);
+	return (double) map((long)value, (long)fromLow, (long)fromHigh, (long) 0, (long) 255);
 }
 
 double joey_utility::mapFromHex(double value, double toLow, double toHigh) {
-	return map(value, 0, 255, toLow, toHigh);
+	return (double) map((long)value, (long)0, (long)255, (long)toLow, (long)toHigh);
 }
 
