@@ -14,19 +14,22 @@ namespace coordinateSystem {
 	{
 	public:
 		T degree;
-		T radial_distance;
+		T radialDistance;
 
 	public:
-		PolarPoint(): degree(0), radial_distance(0), correspondingRP_Defined(false) {}
-		PolarPoint(T degree, T radial_distance): degree(degree), radial_distance(radial_distance), correspondingRP_Defined(
-				false) {}
+		PolarPoint(): degree(0), radialDistance(0), correspondingRP_Defined(false) {}
+		PolarPoint(T _degree, T _radialDistance):
+				degree(_degree),
+				radialDistance(_radialDistance),
+				correspondingRP_Defined(false) {}
 		~PolarPoint();
 
 	public:
+		void SetInfo(T _degree, T _radialDistance);
 		RectangularPoint<T> toRectangular();
 		void move(T x, T y);
-		void modifyDegree(T degree);
-		void modifyRadialDistance(T radial_distance);
+		void modifyDegree(T _degree);
+		void modifyRadialDistance(T _radialDistance);
 
 	private:
 		RectangularPoint<T> correspondingRP;
@@ -47,6 +50,7 @@ namespace coordinateSystem {
 		~RectangularPoint();
 
 	public:
+		void SetInfo(T x, T y);
 		PolarPoint<T> toPolar();
 		void move(T x, T y);
 
