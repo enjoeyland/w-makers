@@ -13,15 +13,15 @@ T joey_utility::toRadian(T degree) {
 	return degree * PI / 180;
 }
 
-float joey_utility::toDegree(float radian) {
+double joey_utility::toDegree(double radian) {
 	return radian * 180 / PI;
 }
 
-float joey_utility::map2Hex(float value, float fromLow, float fromHigh) {
+double joey_utility::map2Hex(double value, double fromLow, double fromHigh) {
 	return map(value, fromLow, fromHigh, 0, 255);
 }
 
-float joey_utility::mapFromHex(float value, float toLow, float toHigh) {
+double joey_utility::mapFromHex(double value, double toLow, double toHigh) {
 	return map(value, 0, 255, toLow, toHigh);
 }
 

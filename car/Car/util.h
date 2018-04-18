@@ -8,8 +8,8 @@
 namespace joey_utility {
 	template <typename T>
 	inline T toRadian(T degree);
-	inline float toDegree(float radian);
-	inline float map2Hex(float value, float fromLow, float fromHigh);
-	inline float mapFromHex(float value, float toLow, float toHigh);
+	inline double toDegree(double radian);
+	inline double map2Hex(double value, double fromLow, double fromHigh);
+	inline double mapFromHex(double value, double toLow, double toHigh);
 }
 #endif //CAR_UTILITY_H
