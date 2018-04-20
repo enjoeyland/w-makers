@@ -51,6 +51,7 @@ namespace coordinateSystem {
 
 	public:
 		void SetInfo(T x, T y);
+		RectangularPoint operator+ (const RectangularPoint &RP);
 		PolarPoint<T> toPolar();
 		void move(T x, T y);
 

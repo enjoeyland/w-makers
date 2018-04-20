@@ -10,7 +10,7 @@ using joey_utility::toDegree;
 
 namespace coordinateSystem {
 	// defining PolarPoint
-	template <typename T>
+	template<typename T>
 	void PolarPoint<T>::SetInfo(T _degree, T _radialDistance) {
 		this->degree = _degree;
 		this->radialDistance = _radialDistance;
@@ -48,10 +48,18 @@ namespace coordinateSystem {
 
 
 	// defining RectangularPoint
-	template <typename T>
+	template<typename T>
 	void RectangularPoint<T>::SetInfo(T x, T y) {
 		this->x = x;
 		this->y = y;
+	}
+
+	template<typename T>
+	RectangularPoint RectangularPoint<T>::operator+(const coordinateSystem::RectangularPoint<T> &RP) {
+		RectangularPoint resultRP;
+		resultRP.x = this.x + RP.x;
+		resultRP.y = this.y + RP.y;
+		return resultRP;
 	}
 
 	template <typename T>
