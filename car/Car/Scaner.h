@@ -9,17 +9,25 @@
 using namespace coordinateSystem;
 
 class Scaner {
+	// control of ultrasonic sensor & servo motor
+
 private:
+	// pin of ultrasonic sensor (ex HC-SR04)
 	int pinUltrasonicTrig;
 	int pinUltrasonicEcho;
+
+	// pin of servo motor (ex TowerPro SG90)
 	int pinServo;
+
+	// servo motor's pulse width range (ex 500-2400)
 	int pulseMin;
 	int pulseMax;
+
 	Servo scanerServo;
 
 public:
-	Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int pulseMin = 500, int pulseMax = 2400);
 	// default pulse min & max is based on TowerPro SG90 Servo
+	Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int pulseMin = 500, int pulseMax = 2400);
 	~Scaner();
 
 public:
