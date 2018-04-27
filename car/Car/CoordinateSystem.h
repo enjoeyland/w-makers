@@ -1,63 +1,88 @@
 //
-// Created by Administrator on 2018-04-15.
+// Created by Enjoeyland on 2018-04-15.
 //
 
 #ifndef CAR_COORDINATESYSTEM_H
 #define CAR_COORDINATESYSTEM_H
 
 namespace coordinateSystem {
-	template <typename T>
 	class RectangularPoint;
 
-	template <typename T>
 	class PolarPoint
 	{
 	public:
-		T degree;
-		T radialDistance;
+		double degree;
+		double radialDistance;
 
 	public:
 		PolarPoint(): degree(0), radialDistance(0), correspondingRP_Defined(false) {}
-		PolarPoint(T _degree, T _radialDistance):
+		PolarPoint(double _degree, double _radialDistance):
 				degree(_degree),
 				radialDistance(_radialDistance),
 				correspondingRP_Defined(false) {}
-		~PolarPoint();
 
 	public:
-		void SetInfo(T _degree, T _radialDistance);
-		RectangularPoint<T> toRectangular();
-		void move(T x, T y);
-		void modifyDegree(T _degree);
-		void modifyRadialDistance(T _radialDistance);
+		void SetInfo(double _degree, double _radialDistance);
+		RectangularPoint toRectangular();
+		void move(double x, double y);
+		void modifyDegree(double _degree);
+		void modifyRadialDistance(double _radialDistance);
 
 	private:
-		RectangularPoint<T> correspondingRP;
+		RectangularPoint correspondingRP;
 		bool correspondingRP_Defined;
 	};
 
 
-	template <typename T>
 	class RectangularPoint
 	{
 	public:
-		T x;
-		T y;
+		double x;
+		double y;
 
 	public:
 		RectangularPoint(): x(0), y(0), correspondingRP_Defined(false) {}
-		RectangularPoint(T x, T y): x(x), y(y), correspondingRP_Defined(false) {}
-		~RectangularPoint();
+		RectangularPoint(double x, double y): x(x), y(y), correspondingRP_Defined(false) {}
 
 	public:
-		void SetInfo(T x, T y);
-		RectangularPoint operator+ (const RectangularPoint &RP);
-		PolarPoint<T> toPolar();
-		void move(T x, T y);
+		void SetInfo(double x, double y);
+		RectangularPoint operator+ (const RectangularPoint &rectangularPoint);
+		RectangularPoint operator- (const RectangularPoint &rectangularPoint);
+		PolarPoint toPolar();
+		void move(double x, double y);
 
 	private:
-		PolarPoint<T> correspondingPP;
+		PolarPoint correspondingPP;
 		bool correspondingRP_Defined;
+	};
+
+
+	class Line
+	{
+	public:
+		RectangularPoint startPoint;
+		RectangularPoint endPoint;
+		double length;
+		double degree;
+
+	public:
+		Line(RectangularPoint endPoint);
+		Line(RectangularPoint startPoint, RectangularPoint endPoint): startPoint(startPoint),endPoint(endPoint) {}
+
+	protected:
+		void calculateLength();
+		void calculateDegree();
+	};
+
+
+	class D2Vector : public Line {
+		// can operate +/-
+	public:
+		D2Vector(RectangularPoint point): Line(point){}
+
+	public:
+		D2Vector operator+(const D2Vector &d2Vector);
+		D2Vector operator-(const D2Vector &d2Vector);
 	};
 }
 

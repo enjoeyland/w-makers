@@ -10,73 +10,100 @@ using joey_utility::toDegree;
 
 namespace coordinateSystem {
 	// defining PolarPoint
-	template<typename T>
-	void PolarPoint<T>::SetInfo(T _degree, T _radialDistance) {
+	void PolarPoint::SetInfo(double _degree, double _radialDistance) {
 		this->degree = _degree;
 		this->radialDistance = _radialDistance;
 	}
 
-	template <typename T>
-	RectangularPoint<T> PolarPoint<T>::toRectangular() {
+	RectangularPoint PolarPoint::toRectangular() {
 		if (correspondingRP_Defined) {
 			return correspondingRP;
 		} else {
-			correspondingRP.x = radialDistance * cos(toRadian<T>(degree));
-			correspondingRP.y = radialDistance * sin(toRadian<T>(degree));
+			correspondingRP.x = radialDistance * cos(toRadian(degree));
+			correspondingRP.y = radialDistance * sin(toRadian(degree));
 			correspondingRP_Defined = true;
 			return correspondingRP;
 		}
 	}
 
-	template <typename T>
-	void PolarPoint<T>::move(T x, T y) {
+	void PolarPoint::move(double x, double y) {
 		toRectangular();
 		correspondingRP.move(x, y);
 		degree = correspondingRP.toPolar().degree;
 		radialDistance = correspondingRP.toPolar().radialDistance;
+
 	}
 
-	template <typename T>
-	void PolarPoint<T>::modifyDegree(T _degree) {
+	void PolarPoint::modifyDegree(double _degree) {
 		this->degree += _degree;
 	}
 
-	template <typename T>
-	void PolarPoint<T>::modifyRadialDistance(T _radialDistance) {
+	void PolarPoint::modifyRadialDistance(double _radialDistance) {
 		this->radialDistance += _radialDistance;
 	}
 
 
 	// defining RectangularPoint
-	template<typename T>
-	void RectangularPoint<T>::SetInfo(T x, T y) {
+	void RectangularPoint::SetInfo(double x, double y) {
 		this->x = x;
 		this->y = y;
 	}
 
-	template<typename T>
-	RectangularPoint RectangularPoint<T>::operator+(const coordinateSystem::RectangularPoint<T> &RP) {
+	RectangularPoint RectangularPoint::operator+(const coordinateSystem::RectangularPoint &rectangularPoint) {
 		RectangularPoint resultRP;
-		resultRP.x = this.x + RP.x;
-		resultRP.y = this.y + RP.y;
+		resultRP.x = this->x + rectangularPoint.x;
+		resultRP.y = this->y + rectangularPoint.y;
 		return resultRP;
 	}
 
-	template <typename T>
-	PolarPoint<T> RectangularPoint<T>::toPolar() {
+	RectangularPoint RectangularPoint::operator-(const coordinateSystem::RectangularPoint &rectangularPoint) {
+		RectangularPoint resultRP;
+		resultRP.x = this->x - rectangularPoint.x;
+		resultRP.y = this->y - rectangularPoint.y;
+		return resultRP;
+	}
+
+	PolarPoint RectangularPoint::toPolar() {
 		if (correspondingRP_Defined) {
 			return correspondingPP;
 		} else {
-			correspondingPP.radialDistance = sqrt(2, pow(x, 2) + pow(y, 2));
+			correspondingPP.radialDistance = sqrt(pow(x, 2) + pow(y, 2));
 			correspondingPP.degree = toDegree(acos(correspondingPP.radialDistance));
 			correspondingRP_Defined = true;
 			return correspondingPP;
 		}
 	}
 
-	template <typename T>
-	void RectangularPoint<T>::move(T x, T y) {
+	void RectangularPoint::move(double x, double y) {
 		this->x += x;
 		this->y += y;
+	}
+
+	// defining Line Class
+	Line::Line(RectangularPoint endPoint) : startPoint(RectangularPoint()), endPoint(endPoint) {
+		calculateLength();
+		calculateDegree();
+	}
+
+	Line::Line(RectangularPoint startPoint, RectangularPoint endPoint): startPoint(startPoint),endPoint(endPoint) {
+		calculateLength();
+		calculateDegree();
+	}
+
+	void Line::calculateLength() {
+		this->length = (double) sqrt(pow(startPoint.x - endPoint.x, 2) + pow(startPoint.y - endPoint.y, 2));
+	}
+
+	void Line::calculateDegree() {
+		this->degree = toDegree(atan((startPoint.y - endPoint.y) / (startPoint.x - endPoint.x)));
+	}
+
+	// defining D2Vector Class
+	D2Vector D2Vector::operator+(const coordinateSystem::D2Vector &d2Vector) {
+		return D2Vector(this->endPoint + d2Vector.endPoint);
+	}
+
+	D2Vector D2Vector::operator-(const coordinateSystem::D2Vector &d2Vector) {
+		return D2Vector(this->endPoint - d2Vector.endPoint);
 	}
 }
