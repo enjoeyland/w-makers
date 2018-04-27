@@ -1,7 +1,8 @@
 #include "CarMovement.h"
 #include <Arduino.h>
 
-// speed값을 0~255에 맞도록 수정 해야 될거 같다.
+// TODO : CarMovement의 speed 를 HexSpeed 와 진짜speed로 구분하기
+// todo : speed값을 0~255에 맞도록 수정 해야 될거 같다.
 
 //namespace carMovement {
 
@@ -17,20 +18,6 @@ CarMovement::CarMovement(
 		pin_right_motor_go(pin_right_motor_go),
 		pin_right_motor_back(pin_right_motor_back),
 		car_width(car_width) {}
-
-double CarMovement::getAngularSpeed(const double &average_speed, const double &radius){
-	return 2 * average_speed / (2 * radius + car_width); // 각속도
-}
-
-
-void CarMovement::turnSpecificDegree(const double &angular_speed, const double &degree) {
-	double angle_radian = degree * PI / 180;
-	double delay_time = angle_radian / angular_speed;
-
-	delay(delay_time * 1000);
-	stop();
-}
-
 
 // 앞으로, 뒤로
 void CarMovement::goForward	(const double &speed, double distance){
@@ -49,7 +36,7 @@ void CarMovement::goBackward	(const double &speed, double distance) {
 	}
 }
 
-void CarMovement::stop (void) {
+void CarMovement::stop () {
 	setMotorSpeed(0, 0);
 }
 
