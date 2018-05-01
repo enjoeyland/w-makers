@@ -12,12 +12,11 @@ CarMovement::CarMovement(
 		int pin_left_motor_back,
 		int pin_right_motor_go,
 		int pin_right_motor_back,
-		double car_width) :
-		pin_left_motor_go(pin_left_motor_go),
-		pin_left_motor_back(pin_left_motor_back),
-		pin_right_motor_go(pin_right_motor_go),
-		pin_right_motor_back(pin_right_motor_back),
-		car_width(car_width) {}
+		Car car) : pin_left_motor_go(pin_left_motor_go),
+                   pin_left_motor_back(pin_left_motor_back),
+                   pin_right_motor_go(pin_right_motor_go),
+                   pin_right_motor_back(pin_right_motor_back),
+                   car(car) {}
 
 // 앞으로, 뒤로
 void CarMovement::goForward	(const double &speed, double distance){
@@ -45,7 +44,7 @@ void CarMovement::stop () {
 // '라디안'이 아니라 '도'로
 void CarMovement::turnLeft	(const double &average_speed, const double &radius, const double &degree= 0) {
 	double angular_speed = getAngularSpeed(average_speed, radius);
-	double right_speed = angular_speed * (radius + car_width);
+	double right_speed = angular_speed * (radius + car.width);
 	double left_speed = angular_speed * radius;
 
 	setMotorSpeed(right_speed, left_speed);
@@ -58,7 +57,7 @@ void CarMovement::turnLeft	(const double &average_speed, const double &radius, c
 void CarMovement::turnRight	(const double &average_speed, const double &radius, const double &degree = 0){
 	double angular_speed = getAngularSpeed(average_speed, radius);
 	double right_speed = angular_speed * radius;
-	double left_speed = angular_speed * (radius + car_width);
+	double left_speed = angular_speed * (radius + car.width);
 
 	setMotorSpeed(right_speed, left_speed);
 
@@ -71,8 +70,8 @@ void CarMovement::turnRight	(const double &average_speed, const double &radius, 
 // 제자리리에서 회전
 void CarMovement::spinLeft	(const double &average_speed, const double &radius, const double &degree = 0){
 	double angular_speed = getAngularSpeed(average_speed, radius);
-	double right_speed = angular_speed * (radius - car_width);
-	double left_speed = angular_speed * (radius + car_width);
+	double right_speed = angular_speed * (radius - car.width);
+	double left_speed = angular_speed * (radius + car.width);
 
 	setMotorSpeed(right_speed, left_speed);
 
@@ -83,8 +82,8 @@ void CarMovement::spinLeft	(const double &average_speed, const double &radius, c
 
 void CarMovement::spinRight	(const double &average_speed, const double &radius, const double &degree = 0){
 	double angular_speed = getAngularSpeed(average_speed, radius);
-	double right_speed = angular_speed * (radius + car_width);
-	double left_speed = angular_speed * (radius - car_width);
+	double right_speed = angular_speed * (radius + car.width);
+	double left_speed = angular_speed * (radius - car.width);
 
 	setMotorSpeed(right_speed, left_speed);
 
@@ -92,6 +91,7 @@ void CarMovement::spinRight	(const double &average_speed, const double &radius, 
 		turnSpecificDegree(angular_speed, degree);
 	}
 }
+
 
 //CarMoveAnalog
 void CarMovementAnalog::setMotorSpeed(const double &right_speed, const double &left_speed) {

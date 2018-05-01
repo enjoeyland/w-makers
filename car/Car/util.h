@@ -27,6 +27,5 @@ namespace joey_utility {
 		return map((long)value, (long)0, (long)255, (long)toLow, (long)toHigh);
 	}
 
-	void setCarMovementRPS();
 }
 #endif //CAR_UTILITY_H

@@ -3,9 +3,10 @@
 
 //namespace carMovement {
 
+#include "Car.h"
+
 class CarMovement {
 	// control of DC motor
-
 protected:
 	// pin of L293D diver
 	int pin_left_motor_go;
@@ -13,7 +14,7 @@ protected:
 	int pin_right_motor_go;
 	int pin_right_motor_back;
 
-	double car_width;
+	Car car;
 
 	const double PI = 3.14;
 
@@ -23,7 +24,7 @@ public:
 			int pin_left_motor_back,
 			int pin_right_motor_go,
 			int pin_right_motor_back,
-			double car_width);
+			Car car);
 
 public:
 	// 앞으로, 뒤로
@@ -44,7 +45,7 @@ protected:
 	virtual void setMotorSpeed(const double &right_speed, const double &left_speed) = 0;
 
 	inline double getAngularSpeed(const double &average_speed, const double &radius){
-		return 2 * average_speed / (2 * radius + car_width); // 각속도
+		return 2 * average_speed / (2 * radius + car.width); // 각속도
 	}
 	inline void turnSpecificDegree(const double &angular_speed, const double &degree){
 		double angle_radian = degree * PI / 180;
@@ -62,11 +63,11 @@ public:
 			int pin_left_motor_back,
 			int pin_right_motor_go,
 			int pin_right_motor_back,
-			double car_width):
-	CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car_width) {};
+			Car car):
+	CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car) {};
 
 public:
-	virtual void setMotorSpeed(const double &right_speed, const double &left_speed);
+	void setMotorSpeed(const double &right_speed, const double &left_speed) final;
 
 };
 
@@ -76,10 +77,10 @@ public:
 			int pin_left_motor_back,
 			int pin_right_motor_go,
 			int pin_right_motor_back,
-			double car_width):
-	CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car_width) {};
+			Car car):
+	CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car) {};
 public:
-	virtual void setMotorSpeed(const double &right_speed, const double &left_speed);
+	void setMotorSpeed(const double &right_speed, const double &left_speed) final;
 };
 //}
 #endif //CAR_CARMOVEMENT_H
