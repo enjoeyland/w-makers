@@ -30,31 +30,31 @@ double Scaner::measureDistance() { // measure distance with servo motor
 	return distance;
 }
 
-PolarPoint<double>* Scaner::scan(double degree) {
+PolarPoint* Scaner::scan(double degree) {
 	double degreeDiff = setServoDegree(degree);
 	double distance = measureDistance();
-	PolarPoint<double> scanData[1];
+	PolarPoint scanData[1];
 	scanData[0].SetInfo(degree - degreeDiff, distance);
 	return scanData;
 }
 
-PolarPoint<double>* Scaner::scanArea(double startDegree, double endDegree, double density) {
+PolarPoint* Scaner::scanArea(double startDegree, double endDegree, double density) {
 	// startDegree <= endDegree
 	// as of now endDegree can be maximum 180
 	if (startDegree == endDegree) {
 		return scan(startDegree);
 	}
 
-	int scanDataSize = (int) (abs(startDegree - endDegree) * density) + 1;
-	PolarPoint<double> scanData[scanDataSize];
+	int scanDataSize = (int) ((startDegree - endDegree) * density) + 1;
+	PolarPoint scanData[scanDataSize];
 	for (int i = 0; i < scanDataSize; i++) {
-		PolarPoint<double>* scanDataSegment = scan(startDegree + i / density);
+		PolarPoint* scanDataSegment = scan(startDegree + i / density);
 		scanData[i].SetInfo(scanDataSegment->degree, scanDataSegment->radialDistance);
 	}
 	return scanData;
 }
 
-PolarPoint<double>* Scaner::scan180(double density) {
+PolarPoint* Scaner::scan180(double density) {
 	return scanArea(0.0, 180.0, density);
 }
 
@@ -68,6 +68,6 @@ double Scaner::setServoDegree(double degree) {
 	long realPulseWidth = map(degree, 0, 180, pulseMin, pulseMax);
 	int practicalPulseWidth = (int) realPulseWidth;
 	scanerServo.writeMicroseconds(practicalPulseWidth);
-	double diff = (double) (map( (long) (realPulseWidth) - practicalPulseWidth, pulseMin, pulseMax, 0, 180));
+	double diff = (double) (map(realPulseWidth) - (long) (practicalPulseWidth), pulseMin, pulseMax, 0, 180));
 	return diff; // return difference with param; unit as degree
 }

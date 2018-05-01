@@ -32,11 +32,11 @@ public:
 
 public:
 	double measureDistance();
-	PolarPoint<double>* scan(double degree); //return array of PolarPoint
+	PolarPoint* scan(double degree); //return array of PolarPoint
 
 	// density is the number of scan per 1 degree
-	PolarPoint<double>* scanArea(double startDegree, double endDegree, double density = 1.0);
-	PolarPoint<double>* scan180(double density = 1.0);
+	PolarPoint* scanArea(double startDegree, double endDegree, double density = 1.0);
+	PolarPoint* scan180(double density = 1.0);
 //	PolarPoint<double>* scan360(double density = 1.0);
 
 protected:

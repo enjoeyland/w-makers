@@ -80,11 +80,6 @@ namespace coordinateSystem {
 	}
 
 	// defining Line Class
-	Line::Line(RectangularPoint endPoint) : startPoint(RectangularPoint()), endPoint(endPoint) {
-		calculateLength();
-		calculateDegree();
-	}
-
 	Line::Line(RectangularPoint startPoint, RectangularPoint endPoint): startPoint(startPoint),endPoint(endPoint) {
 		calculateLength();
 		calculateDegree();

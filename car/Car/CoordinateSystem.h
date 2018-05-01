@@ -66,8 +66,8 @@ namespace coordinateSystem {
 		double degree;
 
 	public:
-		Line(RectangularPoint endPoint);
-		Line(RectangularPoint startPoint, RectangularPoint endPoint): startPoint(startPoint),endPoint(endPoint) {}
+		Line(RectangularPoint startPoint, RectangularPoint endPoint);
+		Line(RectangularPoint endPoint) : Line(RectangularPoint(),endPoint) {}
 
 	protected:
 		void calculateLength();
