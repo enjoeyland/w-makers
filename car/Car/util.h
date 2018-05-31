@@ -7,7 +7,7 @@
 
 #include <Arduino.h>
 
-#define PI 3.14159265
+//#define PI 3.14159265
 
 
 namespace joey_utility {
@@ -19,12 +19,16 @@ namespace joey_utility {
 		return radian * 180 / PI;
 	}
 
-	inline long map2Hex(double value, double fromLow, double fromHigh){
-		return map((long)value, (long)fromLow, (long)fromHigh, (long) 0, (long) 255);
+	inline double convertScale (double value, double inMin, double inMax, double outMin, double outMax){
+		return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 	}
 
-	inline long mapFromHex(double value, double toLow, double toHigh){
-		return map((long)value, (long)0, (long)255, (long)toLow, (long)toHigh);
+	inline double convertScale2Hex (double value, double inMin, double inMax){
+		return convertScale((value, inMin, inMax, 0,  255);
+	}
+
+	inline double convertScaleFromHex(double value, double outMin, double outMax){
+		return convertScale(value, 0, 255, outMin, outMax);
 	}
 
 }
