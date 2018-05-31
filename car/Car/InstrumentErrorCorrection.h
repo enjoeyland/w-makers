@@ -12,20 +12,8 @@
 class InstrumentErrorCorrection
 {
 	// error correction of DC motor, Servo motor
-
 public:
-	CarMovement mCarMovement;
-	Scaner mScaner;
-
-public:
-//	InstrumentErrorCorrection();
-	InstrumentErrorCorrection(CarMovement carMovement, Scaner scaner):
-			mCarMovement(carMovement),
-			Scaner(scaner) {}
-	~InstrumentErrorCorrection();
-
-public:
-	double findMotorRPS(); // Resolution Per Second
+//	InstrumentErrorCorrection():
 };
 
 #endif //CAR_INSTRUMENTERRORCORRECTION_H

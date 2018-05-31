@@ -8,13 +8,14 @@
 #include "CarMovement.h"
 #include "Scaner.h"
 
-class CarPropertyFinder
+class CarPropertyFinder //  car plant model finder
 {
 	// mediator of class CarMovement & InstrumentErrorCorrection
 public:
 	Car car;
 	CarMovement carMovement;
 	Scaner scaner;
+
 public:
 	CarPropertyFinder(Car &car, const CarMovement &carMovement, const Scaner &scaner) :
 			car(car), carMovement(carMovement), scaner(scaner) {}
