@@ -1,86 +1,114 @@
 #ifndef CAR_CARMOVEMENT_H
 #define CAR_CARMOVEMENT_H
 
+// todo : proxy 패턴을 쓸 수 있게 개선하기
+
 //namespace carMovement {
 
 #include "Car.h"
+#include "ObserverPattern.h"
+#include <Arduino.h>
 
-class CarMovement {
+#define CAR_STOP    0
+#define GO_FORWARD  1
+#define GO_BACKWARD 2
+#define TURN_LEFT   3
+#define TURN_RIGHT  4
+#define SPIN_LEFT   5
+#define SPIN_RIGHT  6
+
+class CarMovement : public Subject
+{
 	// control of DC motor
+public:
+	struct CarMovementError {
+		int moveType;
+		int leftHexSpeed;
+		int rightHexSpeed;
+		double leftSpeedDiff;
+		double rightSpeedDiff;
+
+	} currentMovingError;
+
 protected:
 	// pin of L293D diver
-	int pin_left_motor_go;
-	int pin_left_motor_back;
-	int pin_right_motor_go;
-	int pin_right_motor_back;
+	int pin_LeftMotor_go;
+	int pin_leftMotor_back;
+	int pin_rightMotor_go;
+	int pin_rightMotor_back;
 
 	Car car;
 
-	const double PI = 3.14;
+	// const double PI = 3.14; // Arudino.h has PI value
 
 public:
-	CarMovement(
-			int pin_left_motor_go,
-			int pin_left_motor_back,
-			int pin_right_motor_go,
-			int pin_right_motor_back,
-			Car car);
+	// \param *dcMotorPins - {int pin_LeftMotor_go,
+	//			int pin_leftMotor_back,
+	//			int pin_rightMotor_go,
+	//			int pin_rightMotor_back}
+	CarMovement(int *dcMotorPins, Car car);
 
 public:
 	// 앞으로, 뒤로
-	void goForward(const double &speed, double distance = 0);
-	void goBackward(const double &speed, double distance = 0);
+	void goForward(double speed, double distance = 0);
+	void goBackward(double speed, double distance = 0);
 	void stop();
 
 	// 회전
 	// 라디안이 아니라 도로
-	void turnLeft(const double &average_speed, const double &radius, const double &degree = 0);
-	void turnRight(const double &average_speed, const double &radius, const double &degree = 0);
+	void turnLeft(double average_speed, double radius, double degree = 0);
+	void turnRight(double average_speed, double radius, double degree = 0);
 
 	// 제자리리에서 회전
-	void spinLeft(const double &average_speed, const double &radius, const double &degree = 0);
-	void spinRight(const double &average_speed, const double &radius, const double &degree = 0);
+	void spinLeft(double average_speed, double radius, double degree = 0);
+	void spinRight(double average_speed, double radius, double degree = 0);
 
 protected:
-	virtual void setMotorSpeed(const double &right_speed, const double &left_speed) = 0;
+	virtual void setMotorSpeed(int rightHexSpeed, int leftHexSpeed){};
 
-	inline double getAngularSpeed(const double &average_speed, const double &radius){
-		return 2 * average_speed / (2 * radius + car.width); // 각속도
+	inline double getRpsSpeed(double hexSpeed){
+		return hexSpeed * car.rps;
 	}
-	inline void turnSpecificDegree(const double &angular_speed, const double &degree){
-		double angle_radian = degree * PI / 180;
-		double delay_time = angle_radian / angular_speed;
 
-		delay(delay_time * 1000);
+	inline double getHexSpeed(double rpsSpeed) {
+		return  rpsSpeed / car.rps;
+	}
+
+	inline double getAngularSpeed(double averageSpeed, double radius){
+		return 2 * averageSpeed / (2 * radius + car.width); // 각속도
+	}
+
+	inline void turnSpecificDegree(double angularSpeed, double degree){
+		double angleRadian = degree * PI / 180;
+		double delayTime = angleRadian / angularSpeed;
+
+		delay(delayTime * 1000);
 		stop();
 	}
+
 
 };
 
 class CarMovementAnalog : public CarMovement {
 public:
-	CarMovementAnalog(int pin_left_motor_go,
-			int pin_left_motor_back,
-			int pin_right_motor_go,
-			int pin_right_motor_back,
-			Car car):
-	CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car) {};
+	// \param *dcMotorPins - {int pin_LeftMotor_go,
+	//			int pin_leftMotor_back,
+	//			int pin_rightMotor_go,
+	//			int pin_rightMotor_back}
+	CarMovementAnalog(int *dcMotorPins, Car car):
+	CarMovement(dcMotorPins, car) {};
 
 public:
-	void setMotorSpeed(const double &right_speed, const double &left_speed) final;
+	virtual void setMotorSpeed(int rightHexSpeed, int leftHexSpeed);
 
 };
 
 class CarMovementDigital : public CarMovement {
 public:
-	CarMovementDigital(int pin_left_motor_go,
-			int pin_left_motor_back,
-			int pin_right_motor_go,
-			int pin_right_motor_back,
-			Car car):
-	CarMovement(pin_left_motor_go, pin_left_motor_back, pin_right_motor_go, pin_right_motor_back, car) {};
+	CarMovementDigital(int *dcMotorPins, Car car):
+	CarMovement(dcMotorPins, car) {};
 public:
-	void setMotorSpeed(const double &right_speed, const double &left_speed) final;
+	virtual void setMotorSpeed(int rightHexSpeed, int leftSpeed);
 };
 //}
 #endif //CAR_CARMOVEMENT_H
