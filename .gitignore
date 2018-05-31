@@ -1,0 +1,6 @@
+.idea/
+car/cmake*/
+car/CMakeList.txt
+car/Lib/
+*.hex
+
