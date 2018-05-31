@@ -5,6 +5,8 @@
 #include "Scaner.h"
 #include <Arduino.h>
 #include <Servo.h>
+#include "util.h"
+using namespace joey_utility;
 //#include <vector>
 
 Scaner::Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int pulseMin, int pulseMax):
@@ -65,9 +67,9 @@ PolarPoint* Scaner::scan180(double density) {
 //}
 
 double Scaner::setServoDegree(double degree) {
-	long realPulseWidth = map(degree, 0, 180, pulseMin, pulseMax);
-	int practicalPulseWidth = (int) realPulseWidth;
+	double realPulseWidth = convertScale(degree, 0, 180, pulseMin, pulseMax);
+	auto practicalPulseWidth = (int) realPulseWidth;
 	scanerServo.writeMicroseconds(practicalPulseWidth);
-	double diff = (double) (map(realPulseWidth) - (long) (practicalPulseWidth), pulseMin, pulseMax, 0, 180));
+	double diff = convertScale(realPulseWidth - practicalPulseWidth + pulseMin, pulseMin, pulseMax, 0, 180);
 	return diff; // return difference with param; unit as degree
 }

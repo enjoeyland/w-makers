@@ -5,13 +5,15 @@
 #ifndef CAR_SCANER_H
 #define CAR_SCANER_H
 
+#include <Servo.h>
 #include "CoordinateSystem.h"
 using namespace coordinateSystem;
 
 class Scaner {
 	// control of ultrasonic sensor & servo motor
 
-private:
+//private:
+public:
 	// pin of ultrasonic sensor (ex HC-SR04)
 	int pinUltrasonicTrig;
 	int pinUltrasonicEcho;
@@ -28,7 +30,6 @@ private:
 public:
 	// default pulse min & max is based on TowerPro SG90 Servo
 	Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int pulseMin = 500, int pulseMax = 2400);
-	~Scaner();
 
 public:
 	double measureDistance();

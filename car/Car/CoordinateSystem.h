@@ -15,21 +15,18 @@ namespace coordinateSystem {
 		double radialDistance;
 
 	public:
-		PolarPoint(): degree(0), radialDistance(0), correspondingRP_Defined(false) {}
-		PolarPoint(double _degree, double _radialDistance):
-				degree(_degree),
-				radialDistance(_radialDistance),
-				correspondingRP_Defined(false) {}
+		PolarPoint();
+		PolarPoint(double _degree, double _radialDistance);
 
 	public:
 		void SetInfo(double _degree, double _radialDistance);
-		RectangularPoint toRectangular();
+		RectangularPoint* toRectangular();
 		void move(double x, double y);
 		void modifyDegree(double _degree);
 		void modifyRadialDistance(double _radialDistance);
 
 	private:
-		RectangularPoint correspondingRP;
+		RectangularPoint *correspondingRP;
 		bool correspondingRP_Defined;
 	};
 
@@ -41,18 +38,19 @@ namespace coordinateSystem {
 		double y;
 
 	public:
-		RectangularPoint(): x(0), y(0), correspondingRP_Defined(false) {}
-		RectangularPoint(double x, double y): x(x), y(y), correspondingRP_Defined(false) {}
+		RectangularPoint(): x(0), y(0), correspondingRP_Defined(false), correspondingPP(new PolarPoint()) {}
+		RectangularPoint(double x, double y): x(x), y(y), correspondingRP_Defined(false), correspondingPP(new PolarPoint()) {}
 
 	public:
 		void SetInfo(double x, double y);
 		RectangularPoint operator+ (const RectangularPoint &rectangularPoint);
 		RectangularPoint operator- (const RectangularPoint &rectangularPoint);
-		PolarPoint toPolar();
+		bool operator== (const RectangularPoint &rectangularPoint);
+		PolarPoint* toPolar();
 		void move(double x, double y);
 
 	private:
-		PolarPoint correspondingPP;
+		PolarPoint *correspondingPP;
 		bool correspondingRP_Defined;
 	};
 
@@ -67,7 +65,11 @@ namespace coordinateSystem {
 
 	public:
 		Line(RectangularPoint startPoint, RectangularPoint endPoint);
-		Line(RectangularPoint endPoint) : Line(RectangularPoint(),endPoint) {}
+		explicit Line(RectangularPoint endPoint) : Line(RectangularPoint(),endPoint) {}
+
+	public:
+		RectangularPoint getMiddlePoint();
+		bool operator== (const Line &line);
 
 	protected:
 		void calculateLength();
@@ -78,7 +80,7 @@ namespace coordinateSystem {
 	class D2Vector : public Line {
 		// can operate +/-
 	public:
-		D2Vector(RectangularPoint point): Line(point){}
+		explicit D2Vector(RectangularPoint point): Line(point){}
 
 	public:
 		D2Vector operator+(const D2Vector &d2Vector);
