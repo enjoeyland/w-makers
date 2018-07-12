@@ -24,7 +24,7 @@ namespace joey_utility {
 	}
 
 	inline double convertScale2Hex (double value, double inMin, double inMax){
-		return convertScale((value, inMin, inMax, 0,  255);
+		return convertScale(value, inMin, inMax, 0,  255);
 	}
 
 	inline double convertScaleFromHex(double value, double outMin, double outMax){

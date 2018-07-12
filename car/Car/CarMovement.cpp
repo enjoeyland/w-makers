@@ -1,6 +1,5 @@
 #include "CarMovement.h"
 
-// TODO : CarMovement의 speed 를 HexSpeed 와 진짜speed로 구분하기
 
 // CarMovement
 CarMovement::CarMovement(int *dcMotorPins, Car car) :
@@ -54,7 +53,11 @@ void CarMovement::turnLeft	(double average_hexSpeed,  double radius,  double deg
 	double leftSpeed = angularSpeed * radius;
 	double rightSpeed = angularSpeed * (radius + car.width);
 
-	int intLeftHexSpeed, intRightHexSpeed;
+	double leftHexSpeed = getHexSpeed(leftSpeed);
+	double rightHexSpeed = getHexSpeed(rightSpeed);
+	auto intLeftHexSpeed = (int) leftHexSpeed;
+	auto intRightHexSpeed = (int) rightHexSpeed;
+
 	setMotorSpeed(intLeftHexSpeed, intRightHexSpeed);
 
 	//	오차 보정
@@ -73,7 +76,11 @@ void CarMovement::turnRight	(double average_hexSpeed, double radius, double degr
 	double leftSpeed = angularSpeed * (radius + car.width);
 	double rightSpeed = angularSpeed * radius;
 
-	int intLeftHexSpeed, intRightHexSpeed;
+	double leftHexSpeed = getHexSpeed(leftSpeed);
+	double rightHexSpeed = getHexSpeed(rightSpeed);
+	auto intLeftHexSpeed = (int) leftHexSpeed;
+	auto intRightHexSpeed = (int) rightHexSpeed;
+
 	setMotorSpeed(intLeftHexSpeed, intRightHexSpeed);
 
 	//	오차 보정
@@ -93,7 +100,11 @@ void CarMovement::spinLeft (double average_hexSpeed, double radius, double degre
 	double leftSpeed = angularSpeed * (radius + car.width / 2);
 	double rightSpeed = angularSpeed * (radius - car.width / 2);
 
-	int intLeftHexSpeed, intRightHexSpeed;
+	double leftHexSpeed = getHexSpeed(leftSpeed);
+	double rightHexSpeed = getHexSpeed(rightSpeed);
+	auto intLeftHexSpeed = (int) leftHexSpeed;
+	auto intRightHexSpeed = (int) rightHexSpeed;
+
 	setMotorSpeed(intLeftHexSpeed, intRightHexSpeed);
 
 	//	오차 보정
@@ -113,7 +124,11 @@ void CarMovement::spinRight	(double average_hexSpeed, double radius, double degr
 	double rightSpeed = angularSpeed * (radius + car.width / 2);
 
 
-	int intLeftHexSpeed, intRightHexSpeed;
+	double leftHexSpeed = getHexSpeed(leftSpeed);
+	double rightHexSpeed = getHexSpeed(rightSpeed);
+	auto intLeftHexSpeed = (int) leftHexSpeed;
+	auto intRightHexSpeed = (int) rightHexSpeed;
+
 	setMotorSpeed(intLeftHexSpeed, intRightHexSpeed);
 
 	//	오차 보정

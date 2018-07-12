@@ -1,7 +1,7 @@
 #ifndef CAR_CARMOVEMENT_H
 #define CAR_CARMOVEMENT_H
 
-// todo : proxy 패턴을 쓸 수 있게 개선하기
+// todo : override 할 때 default 값 가능한지
 
 //namespace carMovement {
 
@@ -71,18 +71,18 @@ public:
 
 public:
 	// 앞으로, 뒤로
-	void goForward(double speed, double distance) override;
-	void goBackward(double speed, double distance) override;
+	void goForward(double speed, double distance = 0) override;
+	void goBackward(double speed, double distance = 0) override;
 	void stop() override;
 
 	// 회전
 	// 라디안이 아니라 도로
-	void turnLeft(double average_speed, double radius, double degree) override;
-	void turnRight(double average_speed, double radius, double degree) override;
+	void turnLeft(double average_speed, double radius, double degree = 0) override;
+	void turnRight(double average_speed, double radius, double degree = 0) override;
 
 	// 제자리리에서 회전
-	void spinLeft(double average_speed, double radius = 0, double degree) override;
-	void spinRight(double average_speed, double radius = 0, double degree) override;
+	void spinLeft(double average_speed, double radius = 0, double degree = 0) override;
+	void spinRight(double average_speed, double radius = 0, double degree = 0) override;
 
 protected:
 	virtual void setMotorSpeed(int rightHexSpeed, int leftHexSpeed){};

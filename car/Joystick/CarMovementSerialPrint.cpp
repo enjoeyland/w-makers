@@ -1,5 +1,4 @@
 #include "CarMovementSerialPrint.h"
-#include <Arduino.h>
 
 
 // CarMovementSerialPrint

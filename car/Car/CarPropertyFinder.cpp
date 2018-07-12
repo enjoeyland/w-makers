@@ -10,7 +10,7 @@
 double CarPropertyFinder::findCarRPS(int hexSpeed) {
 	// Revolutions Per Second
 	double beforeDistance = scaner.measureDistance();
-	carMovement.goForward(hexSpeed);
+	carMovement.goForward(hexSpeed, 0);
 	delay(2000);
 	carMovement.stop();
 	double afterDistance = scaner.measureDistance();

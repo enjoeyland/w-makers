@@ -75,7 +75,7 @@ namespace coordinateSystem {
 	}
 
 	bool RectangularPoint::operator==(const RectangularPoint &rectangularPoint) {
-		return this->x == rectangularPoint.x && this->y == rectangularPoint.y);
+		return (this->x == rectangularPoint.x && this->y == rectangularPoint.y);
 	}
 
 	PolarPoint* RectangularPoint::toPolar() {
