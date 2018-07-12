@@ -7,8 +7,8 @@
 
 #include "Car.h"
 #include "ObserverPattern.h"
+#include "CarMovementProxy.h"
 #include <Arduino.h>
-
 
 #define CAR_STOP    0
 #define GO_FORWARD  1
@@ -18,47 +18,27 @@
 #define SPIN_LEFT   5
 #define SPIN_RIGHT  6
 
-class CarMovementProxy
-{
-	// proxy of CarMovement for other use(joystick call)
-public:
-	// 앞으로, 뒤로
-	virtual void goForward(double speed, double distance){};
-	virtual void goBackward(double speed, double distance){};
-	virtual void stop(){};
-
-	// 회전
-	// 라디안이 아니라 도로
-	virtual void turnLeft(double average_speed, double radius, double degree){};
-	virtual void turnRight(double average_speed, double radius, double degree){};
-
-	// 제자리리에서 회전
-	virtual void spinLeft(double average_speed, double radius, double degree){};
-	virtual void spinRight(double average_speed, double radius, double degree){};
-
-};
-
-class CarMovementSerialPrint : public CarMovementProxy
-{
-public:
-	// 앞으로, 뒤로
-	void goForward(double speed, double distance) override;
-	void goBackward(double speed, double distance) override;
-	void stop() override;
-
-	// 회전
-	// 라디안이 아니라 도로
-	void turnLeft(double average_speed, double radius, double degree) override;
-	void turnRight(double average_speed, double radius, double degree) override;
-
-	// 제자리리에서 회전
-	void spinLeft(double average_speed, double radius, double degree) override;
-	void spinRight(double average_speed, double radius, double degree) override;
-
-};
+//class CarMovement : public CarMovementProxy
+//{
+//public:
+//	// 앞으로, 뒤로
+//	void goForward(double speed, double distance) override;
+//	void goBackward(double speed, double distance) override;
+//	void stop() override;
+//
+//	// 회전
+//	// 라디안이 아니라 도로
+//	void turnLeft(double average_speed, double radius, double degree) override;
+//	void turnRight(double average_speed, double radius, double degree) override;
+//
+//	// 제자리리에서 회전
+//	void spinLeft(double average_speed, double radius, double degree) override;
+//	void spinRight(double average_speed, double radius, double degree) override;
+//
+//};
 
 
-class CarMovementSerialPrint : public Subject
+class CarMovement : public CarMovementProxy
 {
 	// control of DC motor
 public:
@@ -87,22 +67,22 @@ public:
 	//			int pin_leftMotor_back,
 	//			int pin_rightMotor_go,
 	//			int pin_rightMotor_back}
-	CarMovementSerialPrint(int *dcMotorPins, Car car);
+	CarMovement(int *dcMotorPins, Car car);
 
 public:
 	// 앞으로, 뒤로
-	void goForward(double speed, double distance = 0);
-	void goBackward(double speed, double distance = 0);
-	void stop();
+	void goForward(double speed, double distance) override;
+	void goBackward(double speed, double distance) override;
+	void stop() override;
 
 	// 회전
 	// 라디안이 아니라 도로
-	void turnLeft(double average_speed, double radius, double degree = 0);
-	void turnRight(double average_speed, double radius, double degree = 0);
+	void turnLeft(double average_speed, double radius, double degree) override;
+	void turnRight(double average_speed, double radius, double degree) override;
 
 	// 제자리리에서 회전
-	void spinLeft(double average_speed, double radius = 0, double degree = 0);
-	void spinRight(double average_speed, double radius = 0, double degree = 0);
+	void spinLeft(double average_speed, double radius = 0, double degree) override;
+	void spinRight(double average_speed, double radius = 0, double degree) override;
 
 protected:
 	virtual void setMotorSpeed(int rightHexSpeed, int leftHexSpeed){};
@@ -123,31 +103,31 @@ protected:
 		double angleRadian = degree * PI / 180;
 		double delayTime = angleRadian / angularSpeed;
 
-		delay(delayTime * 1000);
+		delay(static_cast<unsigned long>(delayTime * 1000));
 		stop();
 	}
 
 
 };
 
-class CarMovementAnalog : public CarMovementSerialPrint {
+class CarMovementAnalog : public CarMovement {
 public:
 	// \param *dcMotorPins - {int pin_leftMotor_go,
 	//			int pin_leftMotor_back,
 	//			int pin_rightMotor_go,
 	//			int pin_rightMotor_back}
 	CarMovementAnalog(int *dcMotorPins, Car car):
-	CarMovementSerialPrint(dcMotorPins, car) {};
+	CarMovement(dcMotorPins, car) {};
 
 public:
 	void setMotorSpeed(int rightHexSpeed, int leftHexSpeed) override;
 
 };
 
-class CarMovementDigital : public CarMovementSerialPrint {
+class CarMovementDigital : public CarMovement {
 public:
 	CarMovementDigital(int *dcMotorPins, Car car):
-	CarMovementSerialPrint(dcMotorPins, car) {};
+	CarMovement(dcMotorPins, car) {};
 public:
 	void setMotorSpeed(int rightHexSpeed, int leftSpeed) override;
 };
