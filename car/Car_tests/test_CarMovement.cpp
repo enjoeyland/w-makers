@@ -8,7 +8,7 @@
 using testing::Eq;
 
 namespace {
-#define carMovement (CarMovement) CarMovementAnalog(1,2,3,4, 5.0);
+	#define carMovement (CarMovement) CarMovementAnalog(1,2,3,4, Car());
 
 	class ClassDeclaration : public testing::Test {
 	public:

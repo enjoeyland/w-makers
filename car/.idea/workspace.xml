@@ -1,16 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="false">
-    <generated />
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true" buildAllGenerated="true">
+    <generated>
+      <config projectName="car" targetName="car" />
+    </generated>
   </component>
   <component name="CMakeSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+      <configuration PROFILE_NAME="Debug-Cygwin" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Cygwin" />
+      <configuration PROFILE_NAME="Debug-arduino" CONFIG_NAME="Debug" TOOLCHAIN_NAME="Cygwin" GENERATION_OPTIONS="DCMAKE_TOOLCHAIN_FILE=cmake/Platform/Arduino.cmake" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fd9a473f-cf40-4128-945e-7d1aefbb6594" name="Default" comment="" />
+    <list default="true" id="fd9a473f-cf40-4128-945e-7d1aefbb6594" name="Default" comment="\">
+      <change afterPath="$PROJECT_DIR$/Car/inoSetting.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car/Car_AVR_UNO_atmega328p.hex" beforeDir="false" afterPath="$PROJECT_DIR$/Car/Car_AVR_UNO_atmega328p.hex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car/car.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Car/car.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Car_tests/test_CarMovement.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Car_tests/test_CarMovement.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Joystick/joystick.ino" beforeDir="false" afterPath="$PROJECT_DIR$/Car/joystick.ino" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
+    <ignored path="$PROJECT_DIR$/cmake-build-debug-cygwin/" />
+    <ignored path="$PROJECT_DIR$/cmake-build-debug-arduino/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,31 +32,39 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-Cygwin" />
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="CarMovement.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Car/CarMovement.cpp">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="car.ino" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Car/car.ino">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+            <state relative-caret-position="-320">
+              <caret line="40" column="78" selection-start-line="40" selection-start-column="78" selection-end-line="40" selection-end-column="78" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#130#208#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <file leaf-file-name="joystick.ino" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Car/joystick.ino">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+            <state relative-caret-position="930">
+              <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CarMovement.h" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Car/CarMovement.h">
+      <file leaf-file-name="InoSetting.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Car/InoSetting.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+            <state relative-caret-position="155">
+              <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -53,7 +75,23 @@
     <findStrings>
       <find>angle</find>
       <find>PI</find>
+      <find>generat</find>
+      <find>BOARD_ID</find>
+      <find>uno</find>
+      <find>arduino</find>
+      <find>cmake</find>
+      <find>platform</find>
+      <find>gener</find>
+      <find>print_board</find>
+      <find>const</find>
+      <find>GO_FORWARD</find>
+      <find>pin_leftMotor_back</find>
+      <find>pin_LeftMotor_go</find>
+      <find>vector</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -64,20 +102,121 @@
         <option value="$PROJECT_DIR$/CarMovement.h" />
         <option value="$PROJECT_DIR$/CarMovementAnalog.cpp" />
         <option value="$PROJECT_DIR$/CarMovement.cpp" />
+        <option value="$PROJECT_DIR$/main.cpp" />
+        <option value="$PROJECT_DIR$/Car/carPropertyFinder.h" />
+        <option value="$PROJECT_DIR$/Car/car.h" />
+        <option value="$PROJECT_DIR$/Car/Car.cpp" />
+        <option value="$PROJECT_DIR$/Car/Car.h" />
+        <option value="$PROJECT_DIR$/Car/Scaner.h" />
+        <option value="$PROJECT_DIR$/Car_tests/test_CarPropertyFinder.cpp" />
+        <option value="$PROJECT_DIR$/Car_tests/test_CarMovement.cpp" />
+        <option value="$PROJECT_DIR$/cmake/Platform/Arduino.cmake" />
+        <option value="$PROJECT_DIR$/Car/CoordinateSystem.h" />
+        <option value="$PROJECT_DIR$/Car/ScanDataAnalyst.h" />
+        <option value="$PROJECT_DIR$/Car/CarPropertyFinder.h" />
+        <option value="$PROJECT_DIR$/Car/ObserverPattern.cpp" />
+        <option value="$PROJECT_DIR$/Car/Counter.cpp" />
+        <option value="$PROJECT_DIR$/Car/Counter.h" />
+        <option value="$PROJECT_DIR$/Car/util.cpp" />
+        <option value="$PROJECT_DIR$/Car/Scaner.cpp" />
+        <option value="$PROJECT_DIR$/Car/InstrumentErrorCorrection.cpp" />
+        <option value="$PROJECT_DIR$/Car/InstrumentErrorCorrection.h" />
+        <option value="$PROJECT_DIR$/Joystick/CarMovement.h" />
+        <option value="$PROJECT_DIR$/Joystick/Controller.h" />
+        <option value="$PROJECT_DIR$/Joystick/util.h" />
+        <option value="$PROJECT_DIR$/Joystick/Controller.cpp" />
+        <option value="$PROJECT_DIR$/Car/CarMovementProxy.h" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/Joystick/CarMovementSerialPrint.h" />
+        <option value="$PROJECT_DIR$/Car/CarPropertyFinder.cpp" />
+        <option value="$PROJECT_DIR$/Car/Controller.cpp" />
+        <option value="$PROJECT_DIR$/Car/CarMovementSerialPrint.cpp" />
+        <option value="$PROJECT_DIR$/Joystick/CarMovementSerialPrint.cpp" />
+        <option value="$PROJECT_DIR$/Car/ScanDataAnalyst.cpp" />
+        <option value="$PROJECT_DIR$/Car/Controller.h" />
+        <option value="$PROJECT_DIR$/Car/ObserverPattern.h" />
+        <option value="$PROJECT_DIR$/Car/CoordinateSystem.cpp" />
+        <option value="$PROJECT_DIR$/Car/CarMovement.cpp" />
+        <option value="$PROJECT_DIR$/Car/CarMovement.h" />
+        <option value="$PROJECT_DIR$/Car/inoSetting.cpp" />
+        <option value="$PROJECT_DIR$/Joystick/joystick.ino" />
+        <option value="$PROJECT_DIR$/Car/InoSetting.cpp" />
+        <option value="$PROJECT_DIR$/Car/util.h" />
+        <option value="$PROJECT_DIR$/Car/joystick.ino" />
+        <option value="$PROJECT_DIR$/Car/car.ino" />
       </list>
     </option>
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="85" />
-    <option name="y" value="25" />
-    <option name="width" value="1750" />
-    <option name="height" value="970" />
+    <option name="x" value="950" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showMembers ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Source Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Project Non-Source Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+              <item name="Car" type="cbb8eebc:String" user="Car" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Changed Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+              <item name="Car" type="cbb8eebc:String" user="Car" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <subPane subId="Default">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="car" type="cbb8eebc:String" user="car" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -90,22 +229,43 @@
               <item name="car" type="462c0819:PsiDirectoryNode" />
               <item name="Car" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="car" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car" type="462c0819:PsiDirectoryNode" />
+              <item name="Car_tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car" type="b2602c69:ProjectViewProjectNode" />
+              <item name="car" type="462c0819:PsiDirectoryNode" />
+              <item name="Joystick" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="car" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="debug&#9;ACTION&#9;ActivateDebugToolWindow" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/joey/workplace/2018/computer/arduino/W-makers/car/Car/util.cpp&#10;delay&#9;null&#9;null&#10;debug&#9;ACTION&#9;ActivateDebugToolWindow" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="settings.editor.selected.configurable" value="project.propDebugger" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Car" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\Car" />
+      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\Joystick" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\Car" />
-      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car" />
+      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\Joystick" />
+      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\UML" />
+      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\cmake\Platform" />
+      <recent name="C:\joey\workplace\2018\computer\arduino\W-makers\car\cmake" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -120,6 +280,24 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected="Google Test.ClassDeclaration.test_CarPropertyFinder_declarability">
+    <configuration name="ClassDeclaration.test1" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="car" TARGET_NAME="car" CONFIG_NAME="Debug-Cygwin" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="car" TEST_CLASS="ClassDeclaration" TEST_METHOD="test1" TEST_MODE="SUITE_TEST" />
+    <configuration name="ClassDeclaration.test_CarPropertyFinder_declarability" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="car" TARGET_NAME="car" CONFIG_NAME="Debug-Cygwin" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="car" TEST_CLASS="ClassDeclaration" TEST_METHOD="test_CarPropertyFinder_declarability" TEST_MODE="SUITE_TEST" />
+    <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug-Cygwin" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="car" EXPLICIT_BUILD_TARGET_NAME="all" />
+    <configuration name="car" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="car" TARGET_NAME="car" CONFIG_NAME="Debug-Cygwin" RUN_TARGET_PROJECT_NAME="car" RUN_TARGET_NAME="car" />
+    <list>
+      <item itemvalue="Application.Build All" />
+      <item itemvalue="Application.car" />
+      <item itemvalue="Google Test.ClassDeclaration.test1" />
+      <item itemvalue="Google Test.ClassDeclaration.test_CarPropertyFinder_declarability" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Google Test.ClassDeclaration.test_CarPropertyFinder_declarability" />
+        <item itemvalue="Google Test.ClassDeclaration.test1" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -133,120 +311,515 @@
       <workItem from="1522591511905" duration="324000" />
       <workItem from="1522768649255" duration="5959000" />
       <workItem from="1522827315345" duration="2036000" />
-      <workItem from="1523761420747" duration="1842000" />
+      <workItem from="1523761420747" duration="2430000" />
+      <workItem from="1523764759192" duration="164000" />
+      <workItem from="1524804917139" duration="2102000" />
+      <workItem from="1524807651335" duration="1627000" />
+      <workItem from="1524809333201" duration="8915000" />
+      <workItem from="1524818361524" duration="407000" />
+      <workItem from="1524818867875" duration="4268000" />
+      <workItem from="1524900391099" duration="9963000" />
+      <workItem from="1525161956804" duration="3453000" />
+      <workItem from="1525171953033" duration="127000" />
+      <workItem from="1525172139539" duration="8837000" />
+      <workItem from="1525182999339" duration="2154000" />
+      <workItem from="1525217863972" duration="18603000" />
+      <workItem from="1525320506286" duration="19765000" />
+      <workItem from="1525437186111" duration="411000" />
+      <workItem from="1526032005210" duration="3501000" />
+      <workItem from="1527603326668" duration="299000" />
+      <workItem from="1527734004863" duration="4946000" />
+      <workItem from="1527757087755" duration="1315000" />
+      <workItem from="1528460682894" duration="51000" />
+      <workItem from="1529019860941" duration="12618000" />
+      <workItem from="1531305584160" duration="7529000" />
+      <workItem from="1531353727985" duration="10750000" />
+      <workItem from="1531364622964" duration="5703000" />
+      <workItem from="1531377094491" duration="1926000" />
     </task>
+    <task id="LOCAL-00001" summary="add class Line and D2Vector , remove class polar/rectangular point's template.">
+      <created>1524809727961</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1524809727970</updated>
+    </task>
+    <task id="LOCAL-00002" summary="move util, and  carMovment's inline funtion definition to header file">
+      <created>1524815261842</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1524815261842</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add gtest example">
+      <created>1524815376992</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1524815376992</updated>
+    </task>
+    <task id="LOCAL-00004" summary="class car, carPropertyFinder added&#10;class car has property of car; separated from carMovement&#10;class carPropertyFinder help to config class car property by class carMovement &amp; Scaner">
+      <created>1525142515894</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1525142515894</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update class Scaner, CoordinateSystem&#10;Scaner : remove coordinatesystem's template&#10;Coordinatesystem : Line constructor update">
+      <created>1525142785547</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1525142785547</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10161000" />
+    <option name="totallyTimeSpent" value="140183000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22526042" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="CMake" order="10" weight="0.30068967" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info x="0" y="23" width="1536" height="801" id="PlantUML" order="1" sideWeight="0.5420827" side_tool="true" type="WINDOWED" weight="0.25974885" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45791727" visible="true" weight="0.19299406" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32952926" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.4293866" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32965517" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3281027" />
+      <window_info anchor="bottom" id="Serial Monitor" order="12" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="2" sideWeight="0.33238232" side_tool="true" weight="0.1671141" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3281027" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.67902994" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3281027" />
     </layout>
+    <layout-to-restore>
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.45791727" visible="true" weight="0.19299406" />
+      <window_info id="Structure" order="2" sideWeight="0.33238232" side_tool="true" weight="0.1671141" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Serial Monitor" order="12" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32952926" />
+      <window_info anchor="bottom" id="Version Control" order="10" weight="0.3281027" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3281027" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.67902994" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3281027" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" weight="0.32965517" />
+      <window_info x="0" y="23" width="1536" height="801" id="PlantUML" order="1" sideWeight="0.5420827" side_tool="true" type="WINDOWED" weight="0.25974885" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="CMake" order="11" weight="0.4293866" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add class Line and D2Vector , remove class polar/rectangular point's template." />
+    <MESSAGE value="move util, and  carMovment's inline funtion definition to header file" />
+    <MESSAGE value="add gtest example" />
+    <MESSAGE value="class car, carPropertyFinder added&#10;class car has property of car; separated from carMovement&#10;class carPropertyFinder help to config class car property by class carMovement &amp; Scaner" />
+    <MESSAGE value="update class Scaner, CoordinateSystem&#10;Scaner : remove coordinatesystem's template&#10;Coordinatesystem : Line constructor update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update class Scaner, CoordinateSystem&#10;Scaner : remove coordinatesystem's template&#10;Coordinatesystem : Line constructor update" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="10" />
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Car/CarMovement.cpp">
+    <entry file="file://$PROJECT_DIR$/../../../../../../Lib/arduino_core/Arduino.h" />
+    <entry file="file://$USER_HOME$/.CLion2018.1/system/cygwin_cmake/share/cmake-3.10.2/Modules/Platform/CYGWIN.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2759">
-          <caret line="89" column="78" lean-forward="true" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
+        <state relative-caret-position="160">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Car/CarMovement.h">
+    <entry file="file://$PROJECT_DIR$/../../../../../../Lib/arduino_core/avr/cores/arduino/Arduino.h" />
+    <entry file="file://$USER_HOME$/.CLion2018.1/system/cygwin_cmake/share/cmake-3.10.2/Modules/CMakeDetermineSystem.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1488">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="161">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CarMovementAnalog.cpp">
+    <entry file="file://$PROJECT_DIR$/cmake-build-debug-arduino/CMakeCache.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        <state relative-caret-position="31">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CarMovementAnalog.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car/CarMovement.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1159">
-          <caret line="61" column="18" selection-start-line="61" selection-start-column="18" selection-end-line="61" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CarMovementDigital.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CarMovementAnalog.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="9" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CarMovementAnalog.cpp">
+    <entry file="file://$PROJECT_DIR$/Car/Car.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
-          <caret line="6" selection-start-line="6" selection-end-line="21" selection-end-column="1" />
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CarMovementDigital.cpp">
+    <entry file="file://$USER_HOME$/.CLion2018.1/system/cygwin_cmake/share/cmake-3.10.2/Modules/CMakeTestCCompiler.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="6" selection-start-line="6" selection-end-line="21" selection-end-column="1" />
+        <state relative-caret-position="136">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Car/CarMovement.h">
+    <entry file="file://$PROJECT_DIR$/cmake/Platform/Arduino.cmake">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="60" column="6" selection-start-line="60" selection-start-column="6" selection-end-line="60" selection-end-column="6" />
+        <state relative-caret-position="62">
+          <caret line="303" column="25" selection-start-line="303" selection-start-column="9" selection-end-line="303" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car_tests/test_CarPropertyFinder.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cmake/ArduinoToolchain.cmake">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="18" column="64" selection-start-line="18" selection-start-column="64" selection-end-line="18" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Lib/mthread/mthread.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2135">
+          <caret line="340" column="54" lean-forward="true" selection-start-line="340" selection-start-column="54" selection-end-line="340" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/cygwin64/usr/include/w32api/ipxrtdef.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="175" column="8" selection-start-line="175" selection-start-column="8" selection-end-line="175" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/cygwin64/usr/include/w32api/ntddkbd.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="96" column="9" selection-start-line="96" selection-start-column="9" selection-end-line="96" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/car.puml" />
+    <entry file="file://$PROJECT_DIR$/UML/car_uml.uml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2263">
+          <caret line="91" column="41" lean-forward="true" selection-start-line="91" selection-start-column="41" selection-end-line="91" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car_tests/test_CarMovement.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+          <folding>
+            <element signature="e#47#71#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/util.h" />
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="38" column="30" lean-forward="true" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/CarMovementSerialPrint.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CarPropertyFinder.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Counter.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Counter.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/InstrumentErrorCorrection.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Scaner.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-341">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Scaner.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/InstrumentErrorCorrection.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/ScanDataAnalyst.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2604">
+          <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/ScanDataAnalyst.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/ObserverPattern.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CoordinateSystem.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="70" column="42" selection-start-line="70" selection-start-column="42" selection-end-line="70" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CoordinateSystem.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="74" column="5" selection-start-line="74" selection-start-column="5" selection-end-line="74" selection-end-column="5" />
+          <folding>
+            <element signature="e#50#79#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CarPropertyFinder.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="27" column="16" lean-forward="true" selection-start-line="27" selection-start-column="16" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Controller.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-155">
+          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Controller.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="26" column="37" selection-start-line="26" selection-start-column="37" selection-end-line="26" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CarMovementSerialPrint.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
+          <folding>
+            <element signature="e#76#105#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/ObserverPattern.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/Car.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Car/CarMovement.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        <state relative-caret-position="961">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+    <entry file="file://$PROJECT_DIR$/Car/CarMovement.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
-          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CarMovementSerialPrint.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/CarMovementProxy.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="12" column="58" selection-start-line="12" selection-start-column="58" selection-end-line="12" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/CarMovementProxy.h">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/util.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/CarMovementProxy.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/CarMovementSerialPrint.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/Controller.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1150">
+          <caret line="140" lean-forward="true" selection-start-line="140" selection-end-line="140" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/util.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Joystick/Controller.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/InoSetting.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="5" column="21" lean-forward="true" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/joystick.ino">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="30" column="42" lean-forward="true" selection-start-line="30" selection-start-column="42" selection-end-line="30" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Car/car.ino">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-320">
+          <caret line="40" column="78" selection-start-line="40" selection-start-column="78" selection-end-line="40" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#130#208#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
