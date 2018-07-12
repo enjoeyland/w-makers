@@ -44,31 +44,31 @@ char ControllerHandler::handleInputPin(int *pinData) {
 void ControllerHandler::handleInput(char data) {
 	switch(data) {
 		case 'F':
-			carMovementSerialPrint.goForward(255, 0);
+			carMovement.goForward(255, 0);
 			break;
 		case 'B':
-			carMovementSerialPrint.goBackward(255, 0);
+			carMovement.goBackward(255, 0);
 			break;
 		case 'L':
-			carMovementSerialPrint.spinLeft(255,0,0);
+			carMovement.spinLeft(255,0,0);
 			break;
 		case 'R':
-			carMovementSerialPrint.spinRight(255,0,0);
+			carMovement.spinRight(255,0,0);
 			break;
 		case 'G':
-			carMovementSerialPrint.turnLeft(255,10,0);
+			carMovement.turnLeft(255,10,0);
 			break;
 		case 'I':
-			carMovementSerialPrint.turnRight(255,10,0);
+			carMovement.turnRight(255,10,0);
 			break;
 		case 'H':
-			carMovementSerialPrint.turnLeft(-255,10,0);
+			carMovement.turnLeft(-255,10,0);
 			break;
 		case 'J':
-			carMovementSerialPrint.turnRight(-255,10,0);
+			carMovement.turnRight(-255,10,0);
 			break;
 		case 'S':
-			carMovementSerialPrint.stop();
+			carMovement.stop();
 			break;
 
 		case 'U':
