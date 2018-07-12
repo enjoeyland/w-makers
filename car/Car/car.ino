@@ -4,19 +4,17 @@
 #include "Controller.h"
 
 #ifdef RUN_CAR_INO
-#define setup_controlling_car() setup()
-#define loop_controlling_car()  loop()
+#define setup_car() setup()
+#define loop_car()  loop()
 #endif
 
 namespace controlling_car_ino {
-
 	char command;
 
-	int pinLeftMotorGo = 9;     //좌측모터전진(IN2)
-	int pinLeftMotorBack = 8;     //좌측모터후진(IN1)
-
-	int pinRightMotorGo = 10;    // 우측모터전진(IN3)
-	int pinRightMotorBack = 11;    // 우측모터후진(IN4)
+	const int pinLeftMotorGo = 9;     //좌측모터전진(IN2)
+	const int pinLeftMotorBack = 8;     //좌측모터후진(IN1)
+	const int pinRightMotorGo = 10;    // 우측모터전진(IN3)
+	const int pinRightMotorBack = 11;    // 우측모터후진(IN4)
 	int motorPins[4] = {pinLeftMotorGo, pinLeftMotorBack, pinRightMotorGo, pinRightMotorBack};
 
 	// float car_width = 20;
@@ -43,6 +41,39 @@ void loop_controlling_car() {
 
 	// test_move();
 }
+
+namespace avoiding_car_ino {
+
+}
+
+void setup_avoiding_car_ino() {
+
+}
+
+void loop_avoiding_car_ino() {
+
+}
+
+typedef void (*loopFunction)();
+loopFunction currentLoop;
+const int pinCarMode = 12;
+
+void setup_car() {
+	pinMode(pinCarMode, INPUT);
+	if (digitalRead(pinCarMode)) {
+		setup_avoiding_car_ino();
+		currentLoop = loop_avoiding_car_ino;
+	} else {
+		setup_controlling_car();
+		currentLoop = loop_controlling_car;
+	}
+}
+
+void loop_car(){
+	currentLoop();
+}
+
+
 
 // void test_move() {
 // 	myCar.goForward(255.0, 100.0);
