@@ -4,13 +4,21 @@
 
 #include "Controller.h"
 
-
+//#define CONTROLLER_DEBUG
 
 char ControllerHandler::handleInputPin(int *pinData) {
 	int pinUpData = pinData[0];
 	int pinDownData = pinData[1];
 	int pinLeftData = pinData[2];
 	int pinRightData = pinData[3];
+
+//	Serial.print(pinUpData);
+//	Serial.print(",");
+//	Serial.print(pinDownData);
+//	Serial.print(",");
+//	Serial.print(pinLeftData);
+//	Serial.print(",");
+//	Serial.println(pinRightData);
 
 	if (pinUpData == 1){
 		if (pinLeftData == 0 && pinRightData == 0) {

@@ -8,9 +8,9 @@
 // todo : thread 없애기
 
 //#include <mthread.h>
-#include "ObserverPattern.h"
-#include "Counter.h"
-#include "CarMovement.h"
+//#include "ObserverPattern.h"
+//#include "Counter.h"
+#include "CarMovementSerialPrint.h"
 
 //#define OUTPUT_PIN 5
 //#define NUM_SWITCHES 3
@@ -24,10 +24,10 @@ public:
 class ControllerHandler : public HandlerProxy
 {
 public:
-	explicit ControllerHandler(const CarMovement &carMovementSerialPrint): carMovementSerialPrint(carMovementSerialPrint){};
+	explicit ControllerHandler(const CarMovementSerialPrint &carMovementSerialPrint): carMovementSerialPrint(carMovementSerialPrint){};
 
 	protected:
-	CarMovement carMovementSerialPrint;
+	CarMovementSerialPrint carMovementSerialPrint;
 public:
 	char handleInputPin(int *pinData);
 	void handleInput(char data) override;

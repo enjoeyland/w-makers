@@ -9,6 +9,7 @@
 #include "ObserverPattern.h"
 #include <Arduino.h>
 
+
 #define CAR_STOP    0
 #define GO_FORWARD  1
 #define GO_BACKWARD 2
@@ -17,7 +18,47 @@
 #define SPIN_LEFT   5
 #define SPIN_RIGHT  6
 
-class CarMovement : public Subject
+class CarMovementProxy
+{
+	// proxy of CarMovement for other use(joystick call)
+public:
+	// 앞으로, 뒤로
+	virtual void goForward(double speed, double distance){};
+	virtual void goBackward(double speed, double distance){};
+	virtual void stop(){};
+
+	// 회전
+	// 라디안이 아니라 도로
+	virtual void turnLeft(double average_speed, double radius, double degree){};
+	virtual void turnRight(double average_speed, double radius, double degree){};
+
+	// 제자리리에서 회전
+	virtual void spinLeft(double average_speed, double radius, double degree){};
+	virtual void spinRight(double average_speed, double radius, double degree){};
+
+};
+
+class CarMovementSerialPrint : public CarMovementProxy
+{
+public:
+	// 앞으로, 뒤로
+	void goForward(double speed, double distance) override;
+	void goBackward(double speed, double distance) override;
+	void stop() override;
+
+	// 회전
+	// 라디안이 아니라 도로
+	void turnLeft(double average_speed, double radius, double degree) override;
+	void turnRight(double average_speed, double radius, double degree) override;
+
+	// 제자리리에서 회전
+	void spinLeft(double average_speed, double radius, double degree) override;
+	void spinRight(double average_speed, double radius, double degree) override;
+
+};
+
+
+class CarMovementSerialPrint : public Subject
 {
 	// control of DC motor
 public:
@@ -42,11 +83,11 @@ protected:
 	// const double PI = 3.14; // Arudino.h has PI value
 
 public:
-	// \param *dcMotorPins - {int pin_LeftMotor_go,
+	// \param *dcMotorPins - {int pin_leftMotor_go,
 	//			int pin_leftMotor_back,
 	//			int pin_rightMotor_go,
 	//			int pin_rightMotor_back}
-	CarMovement(int *dcMotorPins, Car car);
+	CarMovementSerialPrint(int *dcMotorPins, Car car);
 
 public:
 	// 앞으로, 뒤로
@@ -60,8 +101,8 @@ public:
 	void turnRight(double average_speed, double radius, double degree = 0);
 
 	// 제자리리에서 회전
-	void spinLeft(double average_speed, double radius, double degree = 0);
-	void spinRight(double average_speed, double radius, double degree = 0);
+	void spinLeft(double average_speed, double radius = 0, double degree = 0);
+	void spinRight(double average_speed, double radius = 0, double degree = 0);
 
 protected:
 	virtual void setMotorSpeed(int rightHexSpeed, int leftHexSpeed){};
@@ -89,26 +130,26 @@ protected:
 
 };
 
-class CarMovementAnalog : public CarMovement {
+class CarMovementAnalog : public CarMovementSerialPrint {
 public:
-	// \param *dcMotorPins - {int pin_LeftMotor_go,
+	// \param *dcMotorPins - {int pin_leftMotor_go,
 	//			int pin_leftMotor_back,
 	//			int pin_rightMotor_go,
 	//			int pin_rightMotor_back}
 	CarMovementAnalog(int *dcMotorPins, Car car):
-	CarMovement(dcMotorPins, car) {};
+	CarMovementSerialPrint(dcMotorPins, car) {};
 
 public:
-	virtual void setMotorSpeed(int rightHexSpeed, int leftHexSpeed);
+	void setMotorSpeed(int rightHexSpeed, int leftHexSpeed) override;
 
 };
 
-class CarMovementDigital : public CarMovement {
+class CarMovementDigital : public CarMovementSerialPrint {
 public:
 	CarMovementDigital(int *dcMotorPins, Car car):
-	CarMovement(dcMotorPins, car) {};
+	CarMovementSerialPrint(dcMotorPins, car) {};
 public:
-	virtual void setMotorSpeed(int rightHexSpeed, int leftSpeed);
+	void setMotorSpeed(int rightHexSpeed, int leftSpeed) override;
 };
 //}
 #endif //CAR_CARMOVEMENT_H
