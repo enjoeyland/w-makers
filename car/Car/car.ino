@@ -1,12 +1,16 @@
-#include "InoSetting.cpp"
+#ifndef CAR_INO
+#define CAR_INO
+
+//#include "joystick.ino"
+#include "CompileInoSetting.cpp"
 #include "CarMovementProxy.h"
 #include "CarMovement.h"
 #include "Controller.h"
 
-#ifdef RUN_CAR_INO
+#ifdef COMPILE_CAR_INO
 #define setup_car() setup()
 #define loop_car()  loop()
-#endif
+#endif //COMPILE_CAR_INO
 
 namespace controlling_car_ino {
 	char command;
@@ -20,7 +24,7 @@ namespace controlling_car_ino {
 	// float car_width = 20;
 	Car car = Car();
 	CarMovement carMovement = static_cast<CarMovement>(CarMovementAnalog(motorPins, car));
-	ControllerHandler controllerHandler = ControllerHandler(static_cast<CarMovementProxy>(carMovement));
+	ControllerHandler controllerHandler = ControllerHandler(&carMovement);
 	//	CarPropertyFinder carPropertyFinder(c,(CarMovement) CarMovementAnalog(5,6,7,8,c), Scaner(9,10,11));
 }
 
@@ -73,7 +77,7 @@ void loop_car(){
 	currentLoop();
 }
 
-
+#endif //CAR_INO
 
 // void test_move() {
 // 	myCar.goForward(255.0, 100.0);

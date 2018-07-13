@@ -1,12 +1,16 @@
-#include "InoSetting.cpp"
+#ifndef JOYSTICK_INO
+#define JOYSTICK_INO
+
+//#include "car.ino"
+#include "CompileInoSetting.cpp"
 #include <Arduino.h>
 #include "CarMovementSerialPrint.h"
 #include "Controller.h"
 
-#ifdef RUN_JOYSTICK_INO
+#ifdef COMPILE_JOYSTICK_INO
 #define setup_joystick() setup()
 #define loop_joystick() loop()
-#endif
+#endif //COMPILE_JOYSTICK_INO
 
 namespace joystick_ino {
 
@@ -15,8 +19,8 @@ namespace joystick_ino {
 	int pinDown = 10;
 	int pinRight = 9;
 
-	CarMovementSerialPrint carMovementSerialPrint = CarMovementSerialPrint();
-	ControllerHandler controllerHandler = ControllerHandler(static_cast<CarMovementProxy>(carMovementSerialPrint));
+	CarMovementSerialPrint carMovementSerialPrint;
+	ControllerHandler controllerHandler = ControllerHandler(&carMovementSerialPrint);
 }
 
 //void setPIn() {
@@ -51,6 +55,7 @@ void loop_joystick() {
 //	Serial.print(",");
 //	Serial.println(rightPinData);
 
-	delay(180);
+	delay(100);
 }
 
+#endif //JOYSTICK_INO
