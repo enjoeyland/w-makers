@@ -3,23 +3,22 @@
 //
 
 #include "CarPropertyFinder.h"
-#include "CarMovement.h"
 #include "ScanDataAnalyst.h"
 #include <Arduino.h>
 
 double CarPropertyFinder::findCarRPS(int hexSpeed) {
 	// Revolutions Per Second
-	double beforeDistance = scaner.measureDistance();
-	carMovement.goForward(hexSpeed, 0);
+	double beforeDistance = scaner->measureDistance();
+	carMovement->goForward(hexSpeed, 0);
 	delay(2000);
-	carMovement.stop();
-	double afterDistance = scaner.measureDistance();
+	carMovement->stop();
+	double afterDistance = scaner->measureDistance();
 	double averageRPS = (afterDistance - beforeDistance) / (double) hexSpeed;
 	return averageRPS;
 }
 
 double CarPropertyFinder::findCarWidth() {
-	ScanDataAnalyst scanDataAnalyst(scaner.scan180(), car.width);
+	ScanDataAnalyst scanDataAnalyst(scaner->scan180(), car.width);
 	int* gl = scanDataAnalyst.groupList;
 	// group list 중 가장 item이 많은 것을 기준으로 잡기
 	// 기준의 법선 기울기를 구하기 (벽쪽 방향으로)
