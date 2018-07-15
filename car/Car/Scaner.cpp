@@ -1,13 +1,14 @@
 //
 // Created by Administrator on 2018-04-18.
 //
-
 #include "Scaner.h"
 #include <Arduino.h>
 #include <Servo.h>
 #include "util.h"
 using namespace joey_utility;
-//#include <vector>
+
+// todo : param의 각도가 음수or0 이여도 작동하게
+
 
 Scaner::Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int pulseMin, int pulseMax):
 		pinUltrasonicTrig(pinUltrasonicTrig),
@@ -19,14 +20,14 @@ Scaner::Scaner(int pinUltrasonicTrig, int pinUltrasonicEcho, int pinServo, int p
 }
 
 double Scaner::measureDistance() { // measure distance with servo motor
-	digitalWrite(pinUltrasonicTrig, LOW); // init servo motor
+	digitalWrite(static_cast<uint8_t>(pinUltrasonicTrig), LOW); // init servo motor
 	delayMicroseconds(2);
 
-	digitalWrite(pinUltrasonicTrig, HIGH); // send pulse
+	digitalWrite(static_cast<uint8_t>(pinUltrasonicTrig), HIGH); // send pulse
 	delayMicroseconds(10);
-	digitalWrite(pinUltrasonicTrig, LOW);
+	digitalWrite(static_cast<uint8_t>(pinUltrasonicTrig), LOW);
 
-	double duration = pulseIn(pinUltrasonicEcho, HIGH); // wait pulse
+	double duration = pulseIn(static_cast<uint8_t>(pinUltrasonicEcho), HIGH, 1000); // wait pulse
 
 	double distance = duration * 0.0172; // 334m/s / 2(왕복 제거)
 	return distance;

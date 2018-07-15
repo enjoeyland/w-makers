@@ -14,7 +14,7 @@ class ScanDataAnalyst
 {
 public:
 	Line lineList[];
-	Line bigChangeList[];
+	int bigChangeList[];
 	Line gapList[];
 	int scanDataLen;
 	int groupList[];

@@ -37,7 +37,7 @@ void ScanDataAnalyst::findBigChange() {
 	int j = 0;
 	for (int i =0; i < scanDataLen - 1; i++) {
 		if (lineList[i].length >= gapMin) {
-			bigChangeList[j] =  lineList[i];
+			bigChangeList[j] = i;
 			j++;
 		}
 	}
@@ -47,29 +47,26 @@ void ScanDataAnalyst::findGap() {
 	// todo : need improve really and a lot
 	int k = 0;
 	for (int i=0; i < sizeof(bigChangeList)/ sizeof(bigChangeList[0]); i++){
-		for (int j =0; j < scanDataLen - 1; j++) {
-			if (lineList[j] == bigChangeList[i]) {
-				double gapSize;
-				double diffDegree;
-				RectangularPoint gapCriterion;
-				Line * gap;
-				if (Line(bigChangeList[i].endPoint).length - Line(bigChangeList[i].startPoint).length >= 0) {
-					diffDegree = lineList[j-1].degree- bigChangeList[i].degree;
-					gapSize = bigChangeList[i].length * sin(diffDegree);
-					gapCriterion = bigChangeList[i].endPoint;
-					gap = new Line(*PolarPoint(lineList[j-1].degree- 270, gapSize).toRectangular()+ gapCriterion, gapCriterion);
+		double gapSize;
+		double diffDegree;
+		RectangularPoint gapCriterion;
+		Line * gap;
+		Line interLine = lineList[bigChangeList[i]];
+		if (Line(interLine.endPoint).length - Line(interLine.startPoint).length >= 0) {
+			diffDegree = lineList[bigChangeList[i]-1].degree- interLine.degree;
+			gapSize = interLine.length * sin(diffDegree);
+			gapCriterion = interLine.endPoint;
+			gap = new Line(*PolarPoint(lineList[bigChangeList[i]-1].degree - 270, gapSize).toRectangular() + gapCriterion, gapCriterion);
 
-				} else {
-					diffDegree = bigChangeList[i].degree - lineList[j+1].degree;
-					gapSize = bigChangeList[i].length * sin(diffDegree);
-					gapCriterion = bigChangeList[i].startPoint;
-					gap = new Line(gapCriterion, *PolarPoint(90 + lineList[j+1].degree,gapSize).toRectangular() + gapCriterion);
-				}
-				if (gapSize >= gapMin) {
-					gapList[k] = *gap;
-					k++;
-				}
-			}
+		} else {
+			diffDegree = interLine.degree - lineList[bigChangeList[i]+1].degree;
+			gapSize = interLine.length * sin(diffDegree);
+			gapCriterion = interLine.startPoint;
+			gap = new Line(gapCriterion, *PolarPoint(90 + lineList[bigChangeList[i]+1].degree,gapSize).toRectangular() + gapCriterion);
+		}
+		if (gapSize >= gapMin) {
+			gapList[k] = *gap;
+			k++;
 		}
 	}
 }
