@@ -40,6 +40,7 @@ void setup_joystick() {
 }
 
 void loop_joystick() {
+//	if (Serial.available() > 0) {
 	int upPinData = digitalRead(joystick_ino::pinUp);
 	int downPinData = digitalRead(joystick_ino::pinDown);
 	int leftPinData = digitalRead(joystick_ino::pinLeft);
@@ -56,6 +57,7 @@ void loop_joystick() {
 //	Serial.println(rightPinData);
 
 	delay(100);
+//	}
 }
 
 #endif //JOYSTICK_INO

@@ -4,6 +4,7 @@
 
 #include "ObserverPattern.h"
 
+// Observer
 Observer::Observer(Subject *subject) : subject(subject){
 	listen();
 }
@@ -12,13 +13,22 @@ void Observer::listen() {
 	subject->attach(this);
 }
 
-void Subject::attach(Observer *obs) {
-	observerVector.push_back(obs);
+
+// Subject
+void Subject::attach(Observer * observer) {
+	observerSet.insert(observer);
+
+}
+
+void Subject::detach(Observer * observer) {
+	observerSet.erase(observer);
 }
 
 void Subject::notify() {
-	for (int i = 0; i < observerVector.size(); i++)
-		observerVector[i]->update();
+//	for(std::set::iterator IterPos = observerSet.begin(); IterPos != observerSet.end(); ++IterPos ) {} <- 잘안됨
+	for(auto IterPos : observerSet){
+		IterPos->update();
+	}
 }
 
 

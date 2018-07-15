@@ -10,8 +10,7 @@
 #include <system_configuration.h>
 #include <unwind-cxx.h>
 #include <utility.h>
-#include <vector>
-using namespace std;
+#include <set>
 
 class Subject;
 
@@ -30,11 +29,11 @@ public:
 
 class Subject
 {
-
 public:
-	vector < class Observer * > observerVector;
+	std::set < class Observer * > observerSet;
 
-	void attach(Observer *obs);
+	void attach(Observer * observer);
+	void detach(Observer * observer);
 	virtual void notify();
 };
 
